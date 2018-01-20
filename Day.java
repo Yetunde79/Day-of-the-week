@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.io.*;
 import java.awt.*;
@@ -41,11 +42,9 @@ public class SE
 		info.setColumns(40);
 		infoPanel.add(info);
 
-		theWindow = new JFrame("Birth Day Finder");
-		// Don't quit the program when "X" is clicked -- user
-		// must use the Quit button
+		theWindow = new JFrame("Day of the Week Finder");
 		theWindow.setDefaultCloseOperation(
-				WindowConstants.DO_NOTHING_ON_CLOSE);
+				WindowConstants.EXIT_ON_CLOSE);
 		thePane = theWindow.getContentPane();
 		thePane.add(controlPanel, BorderLayout.NORTH);
 		thePane.add(infoPanel, BorderLayout.SOUTH);
@@ -99,7 +98,7 @@ public class SE
 				while(!d)
 				{
 					/**Ask for the year*/
-					day = JOptionPane.showInputDialog("What date were you born? (Format:DD)");
+					day = JOptionPane.showInputDialog("What day were you born? (Format:DD)");
 					if (day.length()!=2 || !(day.chars().allMatch(Character::isDigit)))
 					{
 						//the day isn't in the right format
@@ -120,7 +119,7 @@ public class SE
 							if (Integer.valueOf(day)<=30)
 								d=true;
 							else
-								info.setText("Please enter a valid day");
+								info.setText("Please enter a valid day, " + month + "/" + day + "/" + year + " is not valid");
 						}
 						else //leap year case
 						{
@@ -129,14 +128,14 @@ public class SE
 								if(Integer.valueOf(day)<=29)
 									d=true;
 								else
-									info.setText("Please enter a valid day");
+									info.setText("Please enter a valid day, " + month + "/" + day + "/"+ year + " is not valid");
 							}
 							else
 							{
 								if(Integer.valueOf(day)<=28)
 									d=true;
 								else
-									info.setText("Please enter a valid day");
+									info.setText("Please enter a valid day, " + month +"/" + day + "/"+ year + " is not valid");
 							}
 						}
 					}
@@ -167,4 +166,5 @@ public class SE
 		new SE();
 	}
 }
+
 
